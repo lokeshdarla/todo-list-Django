@@ -1,9 +1,7 @@
-# users/urls.py
 from django.urls import path
-from .views import UserListView, UserDetailView, get_tokens_for_user
+from .views import UserRegistrationView, UserLoginView
 
 urlpatterns = [
-    path('users/', UserListView.as_view(), name='user-list'),
-    path('users/<int:pk>/', UserDetailView.as_view(), name='user-detail'),
-    path('login/', get_tokens_for_user, name='token_obtain_pair')
+    path('register/', UserRegistrationView.as_view(), name='user-register'),
+    path('login/', UserLoginView.as_view(), name='user-login'),
 ]
