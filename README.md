@@ -1,4 +1,4 @@
-```markdown
+
 # Project Name
 
 Brief project description.
