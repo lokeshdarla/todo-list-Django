@@ -3,8 +3,12 @@ from rest_framework.response import Response
 from .serializers import UserRegisterForm
 from django.core.exceptions import ValidationError
 from django.db.utils import IntegrityError
+from rest_framework.decorators import api_view, authentication_classes, permission_classes
+from rest_framework.permissions import AllowAny
 
 @api_view(['POST'])
+@authentication_classes([])
+@permission_classes([AllowAny]) 
 def register(request):
     try:
         if request.method != 'POST':
