@@ -40,8 +40,12 @@ def task_create(request):
 @authentication_classes([JWTAuthentication])
 @permission_classes([IsAuthenticated])
 def task_update(request, pk):
-    task = Task.objects.filter(author=request.user, pk=pk).first()
+    task = Task.objects.filter(pk=pk).first()
+
     if task:
+        if task.author != request.user:
+            return Response({"detail": "You do not have permission to update this task."}, status=status.HTTP_403_FORBIDDEN)
+
         serializer = TaskSerializer(task, data=request.data)
         if serializer.is_valid():
             serializer.save()
@@ -57,6 +61,6 @@ def task_delete(request, pk):
     task = Task.objects.filter(author=request.user, pk=pk).first()
     if task:
         task.delete()
-        return Response({"success": "Task deleted successfully"})
+        return Response(status=status.HTTP_204_NO_CONTENT)
     else:
         return Response({"detail": "Task not found"}, status=status.HTTP_404_NOT_FOUND)
