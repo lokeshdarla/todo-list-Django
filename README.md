@@ -65,4 +65,8 @@ python manage.py createsuperuser
 python manage.py runserver
 ```
 
-Visit [http://localhost:8000/](http://localhost:8000/) in your browser.
+### 8. Run the test cases
+
+```bash
+python3 manage.py test 
+```
