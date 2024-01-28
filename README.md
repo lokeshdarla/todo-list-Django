@@ -1,7 +1,7 @@
 
 # Project Name
 
-Brief project description.
+This repository contains the code for a RESTful API implemented in Django, focusing on task management with user authentication using JWT. It includes CRUD operations for tasks and user registration.
 
 ## Prerequisites
 
